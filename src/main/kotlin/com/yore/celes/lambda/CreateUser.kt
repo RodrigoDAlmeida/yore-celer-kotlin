@@ -34,7 +34,7 @@ Content-Type: application/json
         val msg = userRepository.create(user);
 
         return APIGatewayProxyResponseEvent()
-            .withStatusCode(201)
+            .withStatusCode(200)
             .withBody("User created!${msg}")
     }
 }

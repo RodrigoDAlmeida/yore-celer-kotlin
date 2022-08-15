@@ -1,14 +1,13 @@
 package com.yore.celes.repository
 
-import aws.sdk.kotlin.services.dynamodb.DynamoDbClient
 import aws.sdk.kotlin.services.dynamodb.model.AttributeValue
-import aws.sdk.kotlin.services.dynamodb.model.PutItemRequest
+import com.yore.celes.dto.UserView
 import com.yore.celes.model.User
-import kotlinx.coroutines.runBlocking
 import java.util.UUID
 
 class UserRepository {
 
+     val table = "user-celer";
      fun create(user: User):String {
 
         val userMap = mapOf(
@@ -22,22 +21,24 @@ class UserRepository {
             "lastLogin" to AttributeValue.S(user.lastLogin.toString())
 
         )
-        val request = PutItemRequest{
-            tableName = "celer-user"
-            item = userMap
-        }
-
-         runBlocking { put(request);}
+             DynamoDB().putItem(userMap, table);
 
          return "success"
     }
 
-    suspend fun put(item:PutItemRequest){
+    fun get(id:String): UserView {
+        val idMap = mapOf("id" to AttributeValue.S(id));
+        val userResponse = DynamoDB().getItem(idMap, table);
 
-        DynamoDbClient { region = "us-east-1" }.use{
-            ddb -> ddb.putItem(item);
+        if(userResponse != null){
+
         }
 
+        return UserView();
     }
+
+
+
+
 
 }

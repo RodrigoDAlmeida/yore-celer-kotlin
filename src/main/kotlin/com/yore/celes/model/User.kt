@@ -9,5 +9,5 @@ data class User(
     val login:String,
     val password:String,
     val active:Boolean = true,
-    val lastLogin:LocalDateTime? = null
+    val lastLogin:LocalDateTime = LocalDateTime.now()
 );
