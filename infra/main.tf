@@ -25,7 +25,19 @@ resource "aws_dynamodb_table" "dynamodb_user"{
 resource "aws_lambda_function" "create_user" {
   filename      = var.jar_path
   function_name = "create_user"
-  role          = aws_iam_role.iam_for_lambda.arn
+  role          = aws_iam_role.lambda-role.arn
   handler       = "${var.package}CreateUser::handleRequest"
   runtime       = var.java_runtime
+  timeout       = 60
+  memory_size   = 1024
+}
+
+resource "aws_lambda_function" "get_user" {
+  filename      = var.jar_path
+  function_name = "get_user"
+  role          = aws_iam_role.lambda-role.arn
+  handler       = "${var.package}GetUser::handleRequest"
+  runtime       = var.java_runtime
+  timeout       = 60
+  memory_size   = 1024
 }

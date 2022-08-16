@@ -1,2 +1,4 @@
-# yore-celer
-A CRUD system with serverless microservices using Kotlin, Lambda, DynamoDB, API Gateway, Stepfunction and provisioned with Terraform
+# Celer
+Celer is a simple POC of a ReactJS web application using some AWS Services, like Lambda (Kotlin), DynamoDB, API Gateway, Stepfunction and provisioned with Terraform.
+
+![Target Architecture](https://freeimage.host/i/gqTGoJ)

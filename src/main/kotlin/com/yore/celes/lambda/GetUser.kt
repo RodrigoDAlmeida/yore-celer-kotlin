@@ -9,23 +9,17 @@ import com.yore.celes.repository.UserRepository
 import kotlinx.coroutines.runBlocking
 
 
-class CreateUser : RequestHandler<UserInput, APIGatewayProxyResponseEvent> {
+class GetUser : RequestHandler<String, APIGatewayProxyResponseEvent> {
 
 
-    override fun handleRequest(input: UserInput, context: Context?): APIGatewayProxyResponseEvent {
+    override fun handleRequest(id: String, context: Context?): APIGatewayProxyResponseEvent {
 
         var userRepository = UserRepository();
-        var user = User(
-            name = input.name,
-            login = input.login,
-            password = input.password,
-            email = input.email
-        )
 
-        val msg = userRepository.create(user);
+        val user = userRepository.get(id);
 
         return APIGatewayProxyResponseEvent()
             .withStatusCode(200)
-            .withBody("User created!${msg}")
+            .withBody("$user")
     }
 }

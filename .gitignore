@@ -22,9 +22,14 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
+#Terraform Build
+infra/.terraform
+**/infra/.terraform
+infra/terraform.tfstate
+infra/terraform.tfstate.backup
+infra/.terraform.lock.hcl
+
 # Build Folders
-**\infra\.terraform
-**\infra\terraform
-**\build
-**\.gradle
-**\.idea
+**/build
+**/.gradle
+**/.idea

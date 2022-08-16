@@ -19,6 +19,8 @@ dependencies {
     implementation("com.amazonaws:aws-lambda-java-core:1.2.1")
     implementation("aws.sdk.kotlin:dynamodb:0.17.4-beta")
     implementation("com.amazonaws:aws-lambda-java-events:3.9.0")
+    implementation("com.google.code.gson:gson:2.9.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.1")
 
 }
 
