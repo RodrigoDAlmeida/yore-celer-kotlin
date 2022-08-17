@@ -1,3 +1,3 @@
 
-rootProject.name = "celer"
+rootProject.name = "yore-celer"
 

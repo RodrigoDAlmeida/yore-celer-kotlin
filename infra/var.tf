@@ -1,6 +1,6 @@
 variable "jar_path"{
   type = string
-  default = "../build/libs/celer-1.0-SNAPSHOT-all.jar"
+  default = "../build/libs/yore-celer-1.0-SNAPSHOT-all.jar"
 }
 
 variable "java_runtime" {

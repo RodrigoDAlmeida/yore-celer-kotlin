@@ -3,7 +3,7 @@ package com.yore.celes.model
 import java.time.LocalDateTime
 
 data class User(
-    var id:String? = null,
+    var id:String = "",
     var name:String = "",
     var email:String = "",
     var login:String = "",

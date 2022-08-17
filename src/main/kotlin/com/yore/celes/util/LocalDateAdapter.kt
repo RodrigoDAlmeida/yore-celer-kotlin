@@ -10,6 +10,6 @@ import java.time.format.DateTimeFormatter
 
 class LocalDateAdapter : JsonSerializer<LocalDateTime> {
     override fun serialize(src: LocalDateTime, typeOfSrc: Type?, context: JsonSerializationContext?): JsonElement {
-        return JsonPrimitive(src.format(DateTimeFormatter.ISO_LOCAL_DATE))
+        return JsonPrimitive(src.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME))
     }
 }
