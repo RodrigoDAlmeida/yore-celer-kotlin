@@ -3,11 +3,11 @@ package com.yore.celes.model
 import java.time.LocalDateTime
 
 data class User(
-    val id:String? = null,
-    val name:String,
-    val email:String,
-    val login:String,
-    val password:String,
-    val active:Boolean = true,
-    val lastLogin:LocalDateTime = LocalDateTime.now()
+    var id:String? = null,
+    var name:String = "",
+    var email:String = "",
+    var login:String = "",
+    var password:String = "",
+    var active:Boolean = true,
+    var lastLogin:LocalDateTime = LocalDateTime.now()
 );

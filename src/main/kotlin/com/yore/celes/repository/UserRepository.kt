@@ -1,20 +1,14 @@
 package com.yore.celes.repository
 
 import aws.sdk.kotlin.services.dynamodb.model.AttributeValue
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
-import com.yore.celes.dto.UserView
+import com.yore.celes.mapper.UserMapper
 import com.yore.celes.model.User
-import com.yore.celes.util.toJsonObject
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.decodeFromJsonElement
-import java.text.SimpleDateFormat
-import java.util.UUID
+import java.util.*
 
 class UserRepository {
 
-     val table = "user-celer";
-     fun create(user: User):String {
+    val table = "celer-user";
+    fun create(user: User): String {
 
         val userMap = mapOf(
 
@@ -27,24 +21,24 @@ class UserRepository {
             "lastLogin" to AttributeValue.S(user.lastLogin.toString())
 
         )
-             DynamoDB().putItem(userMap, table);
+        DynamoDB().putItem(userMap, table);
 
-         return "success"
+        return "success"
     }
 
-    fun get(id:String): UserView? {
+    fun get(id: String): User? {
         val idMap = mapOf("id" to AttributeValue.S(id));
         val userResponse = DynamoDB().getItem(idMap, table);
 
-        if(userResponse != null){
-            return Json.decodeFromJsonElement<UserView>(userResponse.toJsonObject())
+        if (userResponse != null) {
+            return UserMapper().map(userResponse);
         }
 
         return null;
     }
 
-
-
-
-
 }
+
+
+
+

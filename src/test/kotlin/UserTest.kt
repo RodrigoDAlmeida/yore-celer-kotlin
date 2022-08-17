@@ -1,10 +1,7 @@
-import com.amazonaws.services.lambda.runtime.Context
-import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent
 import com.yore.celes.dto.UserInput
 import com.yore.celes.lambda.CreateUser
 import com.yore.celes.lambda.GetUser
-import com.yore.celes.model.User
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
@@ -41,7 +38,9 @@ class UserTest {
 
     @Test
     fun testUserGet() {
-        var output = GetUser().handleRequest("14756e08-419e-4548-aa13-391b8ff86bca",null);
-        var x = output.body;
+        var output = GetUser().handleRequest("b7307e57-19e9-44a0-978e-0b0362f990e9",null);
+
+        assertEquals(output.statusCode, 200);
     }
+
 }

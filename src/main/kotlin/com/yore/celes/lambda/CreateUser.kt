@@ -25,7 +25,7 @@ class CreateUser : RequestHandler<UserInput, APIGatewayProxyResponseEvent> {
         val msg = userRepository.create(user);
 
         return APIGatewayProxyResponseEvent()
-            .withStatusCode(200)
+            .withStatusCode(201)
             .withBody("User created!${msg}")
     }
 }
